@@ -18,7 +18,7 @@
 
 (defmulti digest (fn [algorithm obj] (class obj)))
 
-(defmacro defdigest [algorithm]
+(defmacro define-digest [algorithm]
   (let [n (lower-case algorithm)
         d (symbol n)
         d_hex (symbol (str n "-hex")) 
@@ -30,8 +30,10 @@
 
 (def algorithms ["MD2" "MD5" "SHA-1" "SHA-256" "SHA-384" "SHA-512"])
 
-(doseq [a algorithms]
-  (defdigest a))
+(defmacro define-all-digests []
+  `(do ~@(map (fn [n] `(define-digest ~n)) algorithms)))
+
+(define-all-digests)
 
 (defmethod digest *byte-array-type* [algorithm b]
   (.. (java.security.MessageDigest/getInstance algorithm)
