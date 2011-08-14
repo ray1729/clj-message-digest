@@ -1,0 +1,46 @@
+# clj-message-digest
+
+Message digest (MD5, SHA-1, etc.) functions for Clojure.
+
+For each digest algorithm supported by java.security.MessageDigest
+(MD2, MD5, SHA-1, SHA-256, SHA-384 and SHA-512), this namespace
+provides three functions. The first, named after the lower-case
+algorithm name, returns a digest as a byte array; the second function
+(suffix "-hex") returns the digest as a hex string; and the third
+function (suffix "-base64") returns the digest as a base-64 encoded
+string.
+
+For example, for the MD5 algorithm, three functions are provided:
+
+* md5
+* md5-hex
+* md5-base64
+
+These functions are implemented as multimethods, currently defined
+for byte array, string, input stream, and file objects.
+
+The implementation borrows code from
+<http://gertalot.com/2011/06/28/md5-hash-from-a-file-in-clojure/> and
+<http://tomlee.co/2009/06/clojure-and-messagedigest/>.
+
+## Usage
+
+  (use 'clj-message-digest.core)
+
+  (md5-hex "some string")
+  (md5-base64 "some string")
+
+  (sha-1-hex (File. "/some/file"))
+  
+  etc.
+
+## Installation
+
+From git@github.com:ray1729/clj-message-digest.git for now, will make
+its way to Clojars RSN.
+  
+## License
+
+Copyright (C) 2011 Ray Miller <ray@1729.org.uk>
+
+Distributed under the Eclipse Public License, the same as Clojure.
