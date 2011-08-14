@@ -37,7 +37,7 @@
   (testing "SHA-1 sum (base64) of a string"
     (is (= (sha-1-base64 test-string) expected-sha1sum-base64))))
 
-(deftest tesh-sha1-file
+(deftest test-sha1-file
   (testing "SHA-1 sum (hex) of a file"
     (is (= (sha-1-hex tmpfile) expected-sha1sum-hex)))
   (testing "SHA-1 sum (base64) of a file"
