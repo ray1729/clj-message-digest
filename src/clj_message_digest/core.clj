@@ -1,20 +1,15 @@
 (ns clj-message-digest.core
   (:use [clojure.contrib.io :only (to-byte-array input-stream *byte-array-type*)]
         [clojure.string :only (lower-case)])
-  (:require [clojure.contrib.base64 :as base64])
   (:import [java.security MessageDigest DigestInputStream]
-           [java.io StringWriter InputStream File]))
+           [java.io StringWriter InputStream File]
+           [org.apache.commons.codec.binary Base64]))
 
 (defn- digest->hex [digest]
   (apply str (map (partial format "%02x") digest)))
 
 (defn- digest->base64 [digest]
-  (let [output (StringWriter.)]
-    (base64/encode (input-stream digest)
-                   output
-                   base64/*base64-alphabet*
-                   nil)
-    (.toString output)))
+  (org.apache.commons.codec.binary.Base64/encodeBase64String digest))
 
 (defmulti digest (fn [algorithm obj] (class obj)))
 

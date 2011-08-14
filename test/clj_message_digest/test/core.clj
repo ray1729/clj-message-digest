@@ -7,9 +7,9 @@
 
 (def test-string "foobar")
 (def expected-md5sum-hex "3858f62230ac3c915f300c664312c63f")
-(def expected-md5sum-base64 "OFj2IjCsPJFfMAxmQxLGPw")
+(def expected-md5sum-base64 "OFj2IjCsPJFfMAxmQxLGPw==")
 (def expected-sha1sum-hex "8843d7f92416211de9ebb963ff4ce28125932878")
-(def expected-sha1sum-base64 "iEPX+SQWIR3p67lj/0zigSWTKHg")
+(def expected-sha1sum-base64 "iEPX+SQWIR3p67lj/0zigSWTKHg=")
 
 (defn tmpfile-fixture [f]
   (binding [tmpfile (doto (java.io.File/createTempFile "test" ".data")

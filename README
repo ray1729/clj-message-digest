@@ -34,20 +34,6 @@ The implementation borrows code from
   
   etc.
 
-## Todo
-
-Right now, the base64 tests are failing. I generated the expected base64 results with:
-
-  perl -MDigest::MD5 -le 'print Digest::MD5::md5_base64("foobar")'
-
-and
-
-  perl -MDigest::SHA1 -le 'print Digest::SHA1::sha1_base64("foobar")'
-
-The expected MD5 hex strings were generated using Perl's md5_hex and
-sha1_hex functions, and the hex strings agree with Clojures's. So I
-suspect the problem lies in the base64 encoding.
-  
 ## Installation
 
 From git@github.com:ray1729/clj-message-digest.git for now, will make
