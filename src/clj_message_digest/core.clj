@@ -1,5 +1,5 @@
 (ns clj-message-digest.core
-  (:use [clojure.contrib.io :only (to-byte-array input-stream *byte-array-type*)]
+  (:use [clojure.java.io :only (input-stream)]
         [clojure.string :only (lower-case)])
   (:import [java.security MessageDigest DigestInputStream]
            [java.io StringWriter InputStream File]
@@ -30,12 +30,12 @@
 
 (define-all-digests)
 
-(defmethod digest *byte-array-type* [algorithm b]
+(defmethod digest (class (make-array Byte/TYPE 0)) [algorithm b]
   (.. (java.security.MessageDigest/getInstance algorithm)
       (digest b)))
 
 (defmethod digest String [algorithm s]
-  (digest algorithm (to-byte-array s)))
+  (digest algorithm (.getBytes s "UTF-8")))
 
 (defmethod digest java.io.InputStream [algorithm stream]
   (let [message-digest (java.security.MessageDigest/getInstance algorithm)
