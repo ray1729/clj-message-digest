@@ -3,7 +3,7 @@
         [clojure.test])
   (:import [java.io File]))
 
-(declare tmpfile)
+(declare ^:dynamic tmpfile)
 
 (def test-string "foobar")
 (def expected-md5sum-hex "3858f62230ac3c915f300c664312c63f")
