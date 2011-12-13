@@ -45,8 +45,13 @@ Removed clojure.contrib.io dependencies:
 * replaced *byte-array-type* with: (class (make-array Byte/TYPE 0))
 * replaced to-byte-array with: (.getBytes s "UTF-8")
 * replaced input-stream with: clojure.java.io/input-stream
+
 ## License
 
 Copyright (C) 2011 Ray Miller <ray@1729.org.uk>
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+## Acknowledgements
+
+Thank you to Jeff Sacks for updating to Clojure 1.3.
