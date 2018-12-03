@@ -46,4 +46,5 @@
     (.digest message-digest)))
 
 (defmethod digest java.io.File [algorithm file]
-  (digest algorithm (input-stream file)))
+  (with-open [s (input-stream file)]
+    (digest algorithm s)))
